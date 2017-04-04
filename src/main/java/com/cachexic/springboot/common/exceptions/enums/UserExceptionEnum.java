@@ -11,7 +11,7 @@ package com.cachexic.springboot.common.exceptions.enums;
 public enum UserExceptionEnum{
     UNKONW(-1,"未知异常"),
     USER_NOT_EXIT(10,"用户不存在"),
-    USER_FOBBIT(11,"用户已被禁用");
+    USER_FOBBIT(11,"用户已被禁用11");
 
     private int code;
     private String msg;

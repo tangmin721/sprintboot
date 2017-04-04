@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService{
         if(age<10){
             throw new BizException(BizExceptionEnum.SERVER_STOP);
         }else if(age>90){
-            throw new UserException(UserExceptionEnum.USER_FOBBIT);
+            throw new UserException(UserExceptionEnum.USER_NOT_EXIT);
         }
     }
 }

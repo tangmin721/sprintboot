@@ -23,20 +23,24 @@ public class ExceptionHandle {
 
     /**
      * 异常统一返回
+     *
      * @return
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public Result handle(Exception e){
-        if(e instanceof BizException) {
-            BizException bizException = (BizException) e;
-            return ResultUtil.fail(bizException.getCode(), bizException.getMessage());
-        }else if( e instanceof UserException){
+    public Result handle(Exception e) {
+        //先写具体的业务异常
+        if (e instanceof UserException) {
             UserException userException = (UserException) e;
             return ResultUtil.fail(userException.getCode(), userException.getMessage());
-        }else {
-            logger.error("[系统异常]{}",e);
-            return ResultUtil.fail(-1,"系统异常："+e.getMessage());
+
+            //再写总的业务异常
+        } else if (e instanceof BizException) {
+            BizException bizException = (BizException) e;
+            return ResultUtil.fail(bizException.getCode(), bizException.getMessage());
+        } else {
+            logger.error("[系统异常]{}", e);
+            return ResultUtil.fail(-1, "系统异常：" + e.getMessage());
         }
     }
 }

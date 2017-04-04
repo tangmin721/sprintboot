@@ -11,22 +11,11 @@ import com.cachexic.springboot.common.exceptions.enums.UserExceptionEnum;
  * @date 2017-04-04 22:39:40
  */
 public class UserException extends BizException{
-    /**错误编码*/
-    private int code;
-
     /**
      * 构造方法
      * @param userExceptionEnum
      */
     public UserException(UserExceptionEnum userExceptionEnum){
         super(userExceptionEnum.getCode(),userExceptionEnum.getMsg());
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 }

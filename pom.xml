@@ -34,6 +34,11 @@
             <!--<version></version>由于我们在上面指定了 parent(spring boot)-->
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!-- 添加fastjson 依赖包.-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -56,6 +61,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+
+
 
         <!-- spring boot devtools 热部署 依赖包. -->
         <dependency>

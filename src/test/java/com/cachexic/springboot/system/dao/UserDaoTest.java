@@ -2,10 +2,12 @@ package com.cachexic.springboot.system.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.cachexic.springboot.system.entity.User;
+import com.cachexic.springboot.system.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -26,6 +28,9 @@ public class UserDaoTest {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private UserService userService;
+
     @Test
     public void insertUser(){
         User user = new User();
@@ -40,6 +45,13 @@ public class UserDaoTest {
     public void getAllUser(){
         List<User> users = userDao.findAll();
         System.out.println(JSON.toJSONString(users));
+    }
+
+    @Test
+    @Rollback(false)
+    public void transactional(){
+        //修改数据库sex的长度
+        userService.insertAandB();
     }
 
     @Test

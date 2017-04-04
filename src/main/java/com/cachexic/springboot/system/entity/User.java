@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import java.util.Date;
 
 
@@ -25,6 +26,9 @@ public class User {
     private String remark;
 
     private String sex;
+
+    @Min(value = 18, message = "未成年人不允许注册")
+    private int age;
 
     public Long getId() {
         return id;
@@ -64,5 +68,13 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

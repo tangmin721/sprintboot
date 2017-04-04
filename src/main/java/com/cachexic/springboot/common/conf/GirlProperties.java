@@ -1,4 +1,4 @@
-package com.cachexic.springboot.conf;
+package com.cachexic.springboot.common.conf;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

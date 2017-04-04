@@ -1,6 +1,6 @@
 package com.cachexic.springboot;
 
-import com.cachexic.springboot.conf.GirlProperties;
+import com.cachexic.springboot.common.conf.GirlProperties;
 import com.cachexic.springboot.system.entity.Role;
 import com.cachexic.springboot.system.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;

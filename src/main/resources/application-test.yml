@@ -1,6 +1,6 @@
 server:
   port: 8088
-  context-path: /springboot
+  #context-path: /springboot
 
 girl:
   cupsize: test-F

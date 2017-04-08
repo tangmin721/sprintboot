@@ -1,6 +1,7 @@
 package com.cachexic.springboot.common.exceptions;
 
 import com.cachexic.springboot.common.exceptions.enums.BizExceptionEnum;
+import com.cachexic.springboot.common.exceptions.enums.UserBizExceptionEnum;
 
 /**
  * @author tangmin
@@ -40,5 +41,15 @@ public class BizException extends RuntimeException{
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public static void main(String[] args) {
+        String msgFormat = "%s:你是谁?%s回答:%s?";
+        String[] sts = new String[]{"aaa","bbb","啥"};
+        String format = String.format(msgFormat, sts);
+        System.out.println(format);
+
+        new BizException(BizExceptionEnum.SERVER_STOP);
+        new UserBizException(UserBizExceptionEnum.USER_NOT_EXIT);
     }
 }

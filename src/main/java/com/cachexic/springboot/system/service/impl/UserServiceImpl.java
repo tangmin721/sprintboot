@@ -1,9 +1,9 @@
 package com.cachexic.springboot.system.service.impl;
 
 import com.cachexic.springboot.common.exceptions.BizException;
-import com.cachexic.springboot.common.exceptions.UserException;
+import com.cachexic.springboot.common.exceptions.UserBizException;
 import com.cachexic.springboot.common.exceptions.enums.BizExceptionEnum;
-import com.cachexic.springboot.common.exceptions.enums.UserExceptionEnum;
+import com.cachexic.springboot.common.exceptions.enums.UserBizExceptionEnum;
 import com.cachexic.springboot.system.dao.UserDao;
 import com.cachexic.springboot.system.entity.User;
 import com.cachexic.springboot.system.service.UserService;
@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService{
 
     }
 
+    /**
+     * 异常测试类（1,2,3）
+     * @param id
+     * @throws Exception
+     */
     public void forAgeReturnSomeMsg(Long id) throws Exception {
         User user = userDao.findOne(id);
         int age = user.getAge();
@@ -54,7 +59,11 @@ public class UserServiceImpl implements UserService{
         if(age<10){
             throw new BizException(BizExceptionEnum.SERVER_STOP);
         }else if(age>90){
-            throw new UserException(UserExceptionEnum.USER_NOT_EXIT);
+            throw new UserBizException(UserBizExceptionEnum.USER_NOT_EXIT);
+        }else{
+            User user1 = new User();
+            user1.getName().toString();
         }
+
     }
 }

@@ -3,12 +3,12 @@ package com.cachexic.springboot.common.exceptions.enums;
 /**
  * @author tangmin
  * @version V1.0
- * @Title: UserExceptionEnum.java
+ * @Title: UserBizExceptionEnum.java
  * @Package com.cachexic.springboot.common.exceptions.enums
  * @Description: 用户模块的异常定义
  * @date 2017-04-04 22:54:18
  */
-public enum UserExceptionEnum{
+public enum UserBizExceptionEnum {
     UNKONW(-1,"未知异常"),
     USER_NOT_EXIT(10,"用户不存在"),
     USER_FOBBIT(11,"用户已被禁用11");
@@ -21,7 +21,7 @@ public enum UserExceptionEnum{
      * @param code
      * @param msg
      */
-    UserExceptionEnum(int code,String msg){
+    UserBizExceptionEnum(int code, String msg){
         this.code = code;
         this.msg = msg;
     }

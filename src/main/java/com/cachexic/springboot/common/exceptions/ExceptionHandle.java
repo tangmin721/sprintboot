@@ -30,9 +30,9 @@ public class ExceptionHandle {
     @ResponseBody
     public Result handle(Exception e) {
         //先写具体的业务异常
-        if (e instanceof UserException) {
-            UserException userException = (UserException) e;
-            return ResultUtil.fail(userException.getCode(), userException.getMessage());
+        if (e instanceof UserBizException) {
+            UserBizException userBizException = (UserBizException) e;
+            return ResultUtil.fail(userBizException.getCode(), userBizException.getMessage());
 
             //再写总的业务异常
         } else if (e instanceof BizException) {
@@ -40,7 +40,7 @@ public class ExceptionHandle {
             return ResultUtil.fail(bizException.getCode(), bizException.getMessage());
         } else {
             logger.error("[系统异常]{}", e);
-            return ResultUtil.fail(-1, "系统异常：" + e.getMessage());
+            return ResultUtil.fail(-100, "系统异常：" + e.getMessage());
         }
     }
 }

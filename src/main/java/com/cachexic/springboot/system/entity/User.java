@@ -1,6 +1,7 @@
 package com.cachexic.springboot.system.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,8 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotBlank(message = "name不能为空")
     private String name;
 
     @JSONField(format = "yyyy-MM-dd HH:mm")
@@ -24,6 +27,7 @@ public class User {
 
     @JSONField(serialize = false)
     private String remark;
+
 
     private String sex;
 

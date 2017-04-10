@@ -1,5 +1,8 @@
 package com.cachexic.springboot.system.controller;
 
+import com.cachexic.springboot.common.exceptions.valid.ValidErrorUtils;
+import com.cachexic.springboot.common.result.Result;
+import com.cachexic.springboot.common.result.ResultUtil;
 import com.cachexic.springboot.system.dao.UserDao;
 import com.cachexic.springboot.system.entity.User;
 import com.cachexic.springboot.system.service.UserService;
@@ -10,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author tangmin
@@ -33,39 +35,37 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("users")
-    public List<User> getUser(){
+    public Result getUser(){
         logger.info("UserController:get user method print");
-        return userDao.findAll();
+        return ResultUtil.SUCCESS(userDao.findAll());
     }
 
     @PostMapping(value = "saveUser")
-    public User saveUser(@Valid User user, BindingResult bindingResult){
+    public Result saveUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return ResultUtil.FAIL(ValidErrorUtils.changgeValidError(bindingResult));
         }
-        return userDao.save(user);
+        return ResultUtil.SUCCESS(userDao.save(user));
     }
 
     @PutMapping("updataUser")
-    public User updateUser(@Valid User user, BindingResult bindingResult){
+    public Result updateUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return ResultUtil.FAIL(ValidErrorUtils.changgeValidError(bindingResult));
         }
-        return userDao.save(user);
+        return ResultUtil.SUCCESS(userDao.save(user));
     }
 
     @DeleteMapping("delete/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public Result deleteUser(@PathVariable Long id){
         userDao.delete(id);
+        return ResultUtil.SUCCESS();
     }
 
     @GetMapping("forAgeReturnSomeMsg/{id}")
-    public void forAgeReturnSomeMsg(@PathVariable Long id) throws Exception {
-//        User user = null;
-//        user.toString();
+    public Result forAgeReturnSomeMsg(@PathVariable Long id) throws Exception {
         userService.forAgeReturnSomeMsg(id);
+        return  ResultUtil.SUCCESS();
     }
 
 }
